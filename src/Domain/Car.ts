@@ -6,23 +6,23 @@ export class Car implements ICarEntity {
     private readonly _id: UUID = randomUUID();
     private readonly brand: string;
     private readonly model: string;
-    private readonly fuelConsumption: number; // unit is l/100 km
-    private readonly tankCapacity: number;
+    private readonly consumption: number; // unit is l/100 km
+    private readonly capacity: number;
     private totalMileage: number = 0;
     private fuelAvailable: number;
 
     constructor(public modelInfo: CarModel) {
         this.brand = modelInfo.brand;
         this.model = modelInfo.model;
-        this.fuelConsumption = modelInfo.fuelConsumption;
-        this.tankCapacity = modelInfo.tankCapacity;
+        this.consumption = modelInfo.consumption;
+        this.capacity = modelInfo.capacity;
         this.fuelAvailable = 0;
     }
 
     public refillGasoline(liters: number): void {
         this.fuelAvailable += liters;
-        if (this.fuelAvailable > this.tankCapacity) {
-            this.fuelAvailable = this.tankCapacity;
+        if (this.fuelAvailable > this.capacity) {
+            this.fuelAvailable = this.capacity;
         }
     }
 
@@ -54,6 +54,6 @@ export class Car implements ICarEntity {
 
     private calculateTripFuelConsumption(distance: number) {
         //consumption unit is l/100 km
-        return (this.fuelConsumption * distance) / 100;
+        return (this.consumption * distance) / 100;
     }
 }
