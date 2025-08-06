@@ -1,6 +1,6 @@
 import { UUID } from 'node:crypto';
 
-export interface ICarEntity {
+export interface IDrive {
     id(): UUID;
     name(): string;
     data(): string;

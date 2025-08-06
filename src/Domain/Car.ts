@@ -1,8 +1,8 @@
 import { CarModel } from './CarModel';
-import { ICarEntity } from './Interfaces/ICarEntity';
+import { IDrive } from './Interfaces/IDrive';
 import { randomUUID, UUID } from 'node:crypto';
 
-export abstract class Car implements ICarEntity {
+export abstract class Car implements IDrive {
     private readonly _id: UUID = randomUUID();
     private readonly brand: string;
     private readonly model: string;
