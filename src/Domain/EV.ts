@@ -24,6 +24,15 @@ export class EV extends Car implements ICharge {
         return `${this.name()}\nTotal Mileage: ${this.mileage()} Km`;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    travel(distance: number): void {}
+    travel(distance: number): void {
+        const consumption = this.chargeConsumption(distance);
+        this.currentCharge -= consumption;
+
+        super.travel(distance);
+    }
+
+    private chargeConsumption(distance: number) {
+        // consumption unit is kWh/100 km.
+        return (this.consumption * distance) / 100;
+    }
 }
