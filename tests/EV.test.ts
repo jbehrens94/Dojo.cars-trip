@@ -18,4 +18,11 @@ describe('EV', () => {
         const amountOfFuelAvailable = car.chargeAmount();
         expect(amountOfFuelAvailable).toBe(150);
     });
+
+    it('should be charged not more than battery capacity', () => {
+        const car = new EV(AvailableVehicles.Tesla.Model3);
+        car.charge(250);
+        const amountOfFuelAvailable = car.chargeAmount();
+        expect(amountOfFuelAvailable).toBe(200);
+    });
 });

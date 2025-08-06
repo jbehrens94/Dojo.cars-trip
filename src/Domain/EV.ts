@@ -11,6 +11,9 @@ export class EV extends Car implements ICharge {
 
     charge(kWh: number) {
         this.currentCharge += kWh;
+        if (this.currentCharge > this.capacity) {
+            this.currentCharge = this.capacity;
+        }
     }
 
     chargeAmount(): number {
