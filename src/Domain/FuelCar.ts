@@ -1,23 +1,13 @@
-import { randomUUID, UUID } from 'node:crypto';
+import { Car } from './Car';
 import { CarModel } from './CarModel';
-import { ICarEntity } from './ICarEntity';
-import { ITank } from './ITank';
+import { ITank } from './Interfaces/ITank';
 
-export class FuelCar implements ICarEntity, ITank {
-    private readonly _id: UUID = randomUUID();
-    private readonly brand: string;
-    private readonly model: string;
-    private readonly consumption: number; // unit is l/100 km
-    private readonly capacity: number;
+export class FuelCar extends Car implements ITank {
     private totalMileage: number = 0;
-    private fuelAvailable: number;
+    private fuelAvailable: number = 0;
 
     constructor(public modelInfo: CarModel) {
-        this.brand = modelInfo.brand;
-        this.model = modelInfo.model;
-        this.consumption = modelInfo.consumption;
-        this.capacity = modelInfo.capacity;
-        this.fuelAvailable = 0;
+        super(modelInfo);
     }
 
     public tank(liters: number): void {
@@ -33,20 +23,12 @@ export class FuelCar implements ICarEntity, ITank {
         this.totalMileage += distance;
     }
 
-    public id(): UUID {
-        return this._id;
-    }
-
     public mileage(): number {
         return this.totalMileage;
     }
 
     public fuelAmount(): number {
         return this.fuelAvailable;
-    }
-
-    public name(): string {
-        return `${this.brand} ${this.model} ${this.id()}`;
     }
 
     public data(): string {
