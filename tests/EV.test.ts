@@ -10,6 +10,7 @@ describe('EV', () => {
         expect(car.name()).toContain('Tesla');
         expect(car.name()).toContain('Model 3');
         expect(car.data()).toContain('Total Mileage: 0 Km');
+        expect(car.data()).toContain('Charge Available: 0 kWh');
     });
 
     it('should be charged', () => {
@@ -47,5 +48,6 @@ describe('EV', () => {
         car.travel(25);
         const availableCharge = car.chargeAmount();
         expect(availableCharge).toBe(0.5);
+        expect(car.data()).toContain('Charge Available: 0.5 kWh');
     });
 });

@@ -21,7 +21,7 @@ export class EV extends Car implements ICharge {
     }
 
     data(): string {
-        return `${this.name()}\nTotal Mileage: ${this.mileage()} Km`;
+        return `${this.name()}\nTotal Mileage: ${this.mileage()} Km\nCharge Available: ${this.chargeAmount()} kWh`;
     }
 
     travel(distance: number): void {
