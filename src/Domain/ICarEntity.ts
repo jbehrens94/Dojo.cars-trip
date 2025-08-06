@@ -1,7 +1,6 @@
 import { UUID } from 'node:crypto';
-import { ITank } from './ITank';
 
-export interface ICarEntity extends ITank {
+export interface ICarEntity {
     id(): UUID;
     name(): string;
     data(): string;
