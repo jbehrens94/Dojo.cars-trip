@@ -1,10 +1,10 @@
 import { UUID } from 'node:crypto';
+import { ITank } from './ITank';
 
-export interface ICarEntity {
+export interface ICarEntity extends ITank {
     id(): UUID;
     name(): string;
     data(): string;
-    refillGasoline(liters: number): void;
     travel(distance: number): void;
     mileage(): number;
 }

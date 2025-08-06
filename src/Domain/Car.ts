@@ -1,8 +1,9 @@
 import { randomUUID, UUID } from 'node:crypto';
 import { CarModel } from './CarModel';
 import { ICarEntity } from './ICarEntity';
+import { ITank } from './ITank';
 
-export class Car implements ICarEntity {
+export class Car implements ICarEntity, ITank {
     private readonly _id: UUID = randomUUID();
     private readonly brand: string;
     private readonly model: string;
@@ -19,7 +20,7 @@ export class Car implements ICarEntity {
         this.fuelAvailable = 0;
     }
 
-    public refillGasoline(liters: number): void {
+    public tank(liters: number): void {
         this.fuelAvailable += liters;
         if (this.fuelAvailable > this.capacity) {
             this.fuelAvailable = this.capacity;

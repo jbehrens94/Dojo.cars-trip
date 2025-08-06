@@ -16,21 +16,21 @@ describe('Car', () => {
 
     it('should be filled with gasoline', () => {
         const car = new Car(AvailableVehicles.Toyota.Corolla);
-        car.refillGasoline(15);
+        car.tank(15);
         const amountOfFuelAvailable = car.fuelAmount();
         expect(amountOfFuelAvailable).toBe(15);
     });
 
     it('should be filled with gasoline not more than tank capacity', () => {
         const car = new Car(AvailableVehicles.Toyota.Camry);
-        car.refillGasoline(75);
+        car.tank(75);
         const amountOfFuelAvailable = car.fuelAmount();
         expect(amountOfFuelAvailable).toBe(40);
     });
 
     it('should be able to travel using the fuel', () => {
         const car = new Car(AvailableVehicles.Toyota.Camry);
-        car.refillGasoline(15);
+        car.tank(15);
         car.travel(100);
         const amountOfFuelAvailable = car.fuelAmount();
         expect(amountOfFuelAvailable).toBe(8);
@@ -39,14 +39,14 @@ describe('Car', () => {
 
     it('should add up mileage after every trip', () => {
         const car = new Car(AvailableVehicles.Toyota.Camry);
-        car.refillGasoline(15);
+        car.tank(15);
         car.travel(100);
         expect(car.mileage()).toBe(100);
     });
 
     it('should be able to travel using the fuel', () => {
         const car = new Car(AvailableVehicles.Toyota.Camry);
-        car.refillGasoline(14);
+        car.tank(14);
         car.travel(50);
         const amountOfFuelAvailable = car.fuelAmount();
         expect(amountOfFuelAvailable).toBe(10.5);
