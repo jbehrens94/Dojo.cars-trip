@@ -7,11 +7,7 @@ export class EV extends Car {
     }
 
     data(): string {
-        return `${this.name()}`;
-    }
-
-    mileage(): number {
-        return 0;
+        return `${this.name()}\nTotal Mileage: ${this.mileage()} Km`;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars

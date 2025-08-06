@@ -3,7 +3,6 @@ import { CarModel } from './CarModel';
 import { ITank } from './Interfaces/ITank';
 
 export class FuelCar extends Car implements ITank {
-    private totalMileage: number = 0;
     private fuelAvailable: number = 0;
 
     constructor(public modelInfo: CarModel) {
@@ -20,7 +19,8 @@ export class FuelCar extends Car implements ITank {
     public travel(distance: number) {
         const tripFuelConsumption = this.calculateTripFuelConsumption(distance);
         this.fuelAvailable -= tripFuelConsumption;
-        this.totalMileage += distance;
+
+        super.travel(distance);
     }
 
     public mileage(): number {
@@ -36,7 +36,7 @@ export class FuelCar extends Car implements ITank {
     }
 
     private calculateTripFuelConsumption(distance: number) {
-        //consumption unit is l/100 km
+        // consumption unit is l/100 km
         return (this.consumption * distance) / 100;
     }
 }

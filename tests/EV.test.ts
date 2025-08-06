@@ -9,5 +9,6 @@ describe('EV', () => {
         expect(mileage).toBe(0);
         expect(car.name()).toContain('Tesla');
         expect(car.name()).toContain('Model 3');
+        expect(car.data()).toContain('Total Mileage: 0 Km');
     });
 });
