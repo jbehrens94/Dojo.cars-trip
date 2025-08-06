@@ -1,9 +1,9 @@
-import { Car } from '../src/Domain/Car';
+import { FuelCar } from '../src/Domain/FuelCar';
 import { AvailableVehicles } from '../src/Domain/Primitives/AvailableVehicles';
 
-describe('Car', () => {
+describe('FuelCar', () => {
     it('should be instantiated with zero mileage', () => {
-        const car = new Car(AvailableVehicles.Toyota.Corolla);
+        const car = new FuelCar(AvailableVehicles.Toyota.Corolla);
         const mileage = car.mileage();
         const amountOfFuelAvailable = car.fuelAmount();
         expect(mileage).toBe(0);
@@ -15,21 +15,21 @@ describe('Car', () => {
     });
 
     it('should be filled with gasoline', () => {
-        const car = new Car(AvailableVehicles.Toyota.Corolla);
+        const car = new FuelCar(AvailableVehicles.Toyota.Corolla);
         car.tank(15);
         const amountOfFuelAvailable = car.fuelAmount();
         expect(amountOfFuelAvailable).toBe(15);
     });
 
     it('should be filled with gasoline not more than tank capacity', () => {
-        const car = new Car(AvailableVehicles.Toyota.Camry);
+        const car = new FuelCar(AvailableVehicles.Toyota.Camry);
         car.tank(75);
         const amountOfFuelAvailable = car.fuelAmount();
         expect(amountOfFuelAvailable).toBe(40);
     });
 
     it('should be able to travel using the fuel', () => {
-        const car = new Car(AvailableVehicles.Toyota.Camry);
+        const car = new FuelCar(AvailableVehicles.Toyota.Camry);
         car.tank(15);
         car.travel(100);
         const amountOfFuelAvailable = car.fuelAmount();
@@ -38,14 +38,14 @@ describe('Car', () => {
     });
 
     it('should add up mileage after every trip', () => {
-        const car = new Car(AvailableVehicles.Toyota.Camry);
+        const car = new FuelCar(AvailableVehicles.Toyota.Camry);
         car.tank(15);
         car.travel(100);
         expect(car.mileage()).toBe(100);
     });
 
     it('should be able to travel using the fuel', () => {
-        const car = new Car(AvailableVehicles.Toyota.Camry);
+        const car = new FuelCar(AvailableVehicles.Toyota.Camry);
         car.tank(14);
         car.travel(50);
         const amountOfFuelAvailable = car.fuelAmount();

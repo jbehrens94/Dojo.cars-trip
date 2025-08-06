@@ -3,7 +3,7 @@ import { CarModel } from './CarModel';
 import { ICarEntity } from './ICarEntity';
 import { ITank } from './ITank';
 
-export class Car implements ICarEntity, ITank {
+export class FuelCar implements ICarEntity, ITank {
     private readonly _id: UUID = randomUUID();
     private readonly brand: string;
     private readonly model: string;
