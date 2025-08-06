@@ -2,6 +2,8 @@ import { Car } from './Car';
 import { CarModel } from './CarModel';
 
 export class EV extends Car {
+    private currentCharge: number = 0;
+
     constructor(public modelInfo: CarModel) {
         super(modelInfo);
     }
