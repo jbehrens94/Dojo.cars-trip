@@ -11,4 +11,11 @@ describe('EV', () => {
         expect(car.name()).toContain('Model 3');
         expect(car.data()).toContain('Total Mileage: 0 Km');
     });
+
+    it('should be charged', () => {
+        const car = new EV(AvailableVehicles.Tesla.Model3);
+        car.charge(150);
+        const amountOfFuelAvailable = car.chargeAmount();
+        expect(amountOfFuelAvailable).toBe(150);
+    });
 });
