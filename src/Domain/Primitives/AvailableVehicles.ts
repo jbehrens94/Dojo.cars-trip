@@ -6,4 +6,7 @@ export const AvailableVehicles = {
     Ford: {
         Mustang: { brand: 'Ford', model: 'Mustang', consumption: 8, capacity: 50 },
     },
+    Tesla: {
+        Model3: { brand: 'Tesla', model: 'Model 3', consumption: 2, capacity: 200 },
+    },
 } as const;
