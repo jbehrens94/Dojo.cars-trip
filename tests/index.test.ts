@@ -1,4 +1,5 @@
 import request from 'supertest';
+
 import { server } from '../src/index';
 
 describe('GET /health', () => {

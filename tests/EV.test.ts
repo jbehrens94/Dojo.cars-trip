@@ -1,5 +1,5 @@
-import { AvailableVehicles } from '../src/Domain/Primitives/AvailableVehicles';
 import { EV } from '../src/Domain/EV';
+import { AvailableVehicles } from '../src/Domain/Primitives/AvailableVehicles';
 
 describe('EV', () => {
     it('should be instantiated with zero mileage', () => {
