@@ -14,7 +14,7 @@ export class EVResponse {
     private readonly currentCharge: number;
 
     constructor(ev: EV) {
-        this.id = ev._id;
+        this.id = ev.id;
         this.brand = ev.brand;
         this.model = ev.model;
         this.engineType = Vocabulary.ELECTRIC;

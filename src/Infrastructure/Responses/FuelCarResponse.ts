@@ -14,7 +14,7 @@ export class FuelCarResponse {
     private readonly currentFuelLevel: number;
 
     constructor(fuelCar: FuelCar) {
-        this.id = fuelCar._id;
+        this.id = fuelCar.id;
         this.brand = fuelCar.brand;
         this.model = fuelCar.model;
         this.engineType = Vocabulary.GASOLINE;

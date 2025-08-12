@@ -3,4 +3,5 @@ import { FuelCar } from '../../Domain/FuelCar';
 
 export interface IVehicleRepository {
     allVehicles(): (FuelCar | EV)[];
+    vehicleForId(id: string): (FuelCar | EV) | undefined;
 }

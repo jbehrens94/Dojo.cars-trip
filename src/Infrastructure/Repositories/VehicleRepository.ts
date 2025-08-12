@@ -12,4 +12,8 @@ export class VehicleRepository implements IVehicleRepository {
     allVehicles(): (FuelCar | EV)[] {
         return this.vehicles;
     }
+
+    vehicleForId(id: string): FuelCar | EV | undefined {
+        return this.vehicles.find((vehicle) => vehicle.id === id);
+    }
 }

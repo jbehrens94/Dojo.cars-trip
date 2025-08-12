@@ -5,7 +5,7 @@ import { IDrive } from './Interfaces/IDrive';
 import { IResponse } from './Interfaces/IResponse';
 
 export abstract class Car<ResponseType> implements IDrive, IResponse<ResponseType> {
-    readonly _id: UUID = randomUUID();
+    readonly id: UUID = randomUUID();
     readonly brand: string;
     readonly model: string;
 
@@ -21,12 +21,8 @@ export abstract class Car<ResponseType> implements IDrive, IResponse<ResponseTyp
         this.totalMileage = totalMileage;
     }
 
-    public id(): UUID {
-        return this._id;
-    }
-
     public name(): string {
-        return `${this.brand} ${this.model} ${this.id()}`;
+        return `${this.brand} ${this.model} ${this.id}`;
     }
 
     public mileage(): number {
