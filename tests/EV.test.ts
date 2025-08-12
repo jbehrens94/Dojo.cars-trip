@@ -15,16 +15,16 @@ describe('EV', () => {
 
     it('should be charged', () => {
         const car = new EV(AvailableVehicles.Tesla.Model3);
-        car.charge(150);
+        car.charge(60);
         const availableCharge = car.chargeAmount();
-        expect(availableCharge).toBe(150);
+        expect(availableCharge).toBe(60);
     });
 
     it('should be charged not more than battery capacity', () => {
         const car = new EV(AvailableVehicles.Tesla.Model3);
-        car.charge(250);
+        car.charge(100);
         const availableCharge = car.chargeAmount();
-        expect(availableCharge).toBe(200);
+        expect(availableCharge).toBe(75);
     });
 
     it('should be able to travel using the charge', () => {
@@ -32,7 +32,7 @@ describe('EV', () => {
         car.charge(50);
         car.travel(100);
         const availableCharge = car.chargeAmount();
-        expect(availableCharge).toBe(48);
+        expect(availableCharge).toBe(31.5);
     });
 
     it('should add up mileage after every trip', () => {
@@ -44,10 +44,10 @@ describe('EV', () => {
 
     it('should be able to travel using the fuel', () => {
         const car = new EV(AvailableVehicles.Tesla.Model3);
-        car.charge(1);
+        car.charge(10);
         car.travel(25);
         const availableCharge = car.chargeAmount();
-        expect(availableCharge).toBe(0.5);
-        expect(car.data()).toContain('Charge Available: 0.5 kWh');
+        expect(availableCharge).toBe(5.375);
+        expect(car.data()).toContain('Charge Available: 5.375 kWh');
     });
 });

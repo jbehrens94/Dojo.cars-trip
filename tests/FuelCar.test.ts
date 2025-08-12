@@ -25,7 +25,7 @@ describe('FuelCar', () => {
         const car = new FuelCar(AvailableVehicles.Toyota.Camry);
         car.tank(75);
         const amountOfFuelAvailable = car.fuelAmount();
-        expect(amountOfFuelAvailable).toBe(40);
+        expect(amountOfFuelAvailable).toBe(60);
     });
 
     it('should be able to travel using the fuel', () => {
@@ -33,8 +33,8 @@ describe('FuelCar', () => {
         car.tank(15);
         car.travel(100);
         const amountOfFuelAvailable = car.fuelAmount();
-        expect(amountOfFuelAvailable).toBe(8);
-        expect(car.data()).toContain('Fuel Available: 8 l');
+        expect(amountOfFuelAvailable).toBe(7.5);
+        expect(car.data()).toContain('Fuel Available: 7.5 l');
     });
 
     it('should add up mileage after every trip', () => {
@@ -49,7 +49,7 @@ describe('FuelCar', () => {
         car.tank(14);
         car.travel(50);
         const amountOfFuelAvailable = car.fuelAmount();
-        expect(amountOfFuelAvailable).toBe(10.5);
-        expect(car.data()).toContain('Fuel Available: 10.5 l');
+        expect(amountOfFuelAvailable).toBe(10.25);
+        expect(car.data()).toContain('Fuel Available: 10.25 l');
     });
 });
