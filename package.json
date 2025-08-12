@@ -16,7 +16,8 @@
     "build-image": "docker build -t cars-trip . --progress=plain",
     "run-image": "docker run -d -p 3000:3000 cars-trip",
     "smoketest": "curl http://127.0.0.1:3000/health",
-    "prepare": "husky"
+    "prepare": "husky",
+    "bruno": "cd api/CarTripKataCollection && npx bru run"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

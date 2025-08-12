@@ -1,0 +1,55 @@
+meta {
+  name: getVehicles
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://127.0.0.1:3000/api/v1/vehicles
+  body: none
+  auth: inherit
+}
+
+script:post-response {
+  const vehicles = res.getBody();
+  
+  if (Array.isArray(vehicles) && vehicles.length > 0) {
+    // Save the id of the first vehicle to a variable
+      bru.setVar('firstVehicleId', vehicles[0].id);
+  }
+}
+
+tests {
+  test("should return 200", () => {
+    expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("should return 2 vehicles: 1 petrol, 1 EV", () => {
+    const vehicles = res.getBody();
+    expect(vehicles.length).to.eql(2);
+  
+    // Check first (petrol) vehicle
+    expect(typeof vehicles[0].id).to.eql("string");
+    expect(vehicles[0].brand).to.eql("Toyota");
+    expect(vehicles[0].model).to.eql("Camry");
+    expect(vehicles[0].engineType).to.eql("gasoline");
+    expect(vehicles[0].totalMileage).to.eql(15000.5);
+    expect(vehicles[0].fuelConsumption).to.eql(7.5);
+    expect(vehicles[0].tankCapacity).to.eql(60);
+    expect(vehicles[0].currentFuelLevel).to.eql(45);
+  
+  //   // Check second (EV) vehicle
+    expect(typeof vehicles[1].id).to.eql("string");
+    expect(vehicles[1].brand).to.eql("Tesla");
+    expect(vehicles[1].model).to.eql("Model 3");
+    expect(vehicles[1].engineType).to.eql("electric");
+    expect(vehicles[1].totalMileage).to.eql(8500);
+    expect(vehicles[1].energyConsumption).to.eql(18.5);
+    expect(vehicles[1].batteryCapacity).to.eql(75);
+    expect(vehicles[1].currentCharge).to.eql(0);
+  });
+}
+
+settings {
+  encodeUrl: true
+}

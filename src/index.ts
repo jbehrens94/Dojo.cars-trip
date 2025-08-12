@@ -1,9 +1,14 @@
 import express, { Express, Request, Response } from 'express';
 
+import { router as vehicleRoutes } from './Infrastructure/vehicle.routes';
+
 const app: Express = express();
+const port = 3000;
+
 app.use(express.json()); // to parse JSON bodies
 
-const port = 3000;
+// Routes
+app.use('/api/v1/vehicles', vehicleRoutes);
 
 // GET /health
 app.get('/health', (_req: Request, res: Response) => {

@@ -1,12 +1,15 @@
 import { Car } from './Car';
 import { CarModel } from './CarModel';
 import { ICharge } from './Interfaces/ICharge';
+import { EVResponse } from '../Infrastructure/Responses/EVResponse';
 
-export class EV extends Car implements ICharge {
+export class EV extends Car<EVResponse> implements ICharge {
     private currentCharge: number = 0;
 
-    constructor(public modelInfo: CarModel) {
-        super(modelInfo);
+    constructor(modelInfo: CarModel, mileage: number = 0, charge: number = 0) {
+        super(modelInfo, mileage);
+
+        this.currentCharge = charge;
     }
 
     charge(kWh: number) {
@@ -34,5 +37,9 @@ export class EV extends Car implements ICharge {
     private chargeConsumption(distance: number) {
         // consumption unit is kWh/100 km.
         return (this.consumption * distance) / 100;
+    }
+
+    asResponse(): EVResponse {
+        return new EVResponse(this);
     }
 }

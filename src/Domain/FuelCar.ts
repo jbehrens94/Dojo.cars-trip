@@ -1,12 +1,15 @@
 import { Car } from './Car';
 import { CarModel } from './CarModel';
 import { ITank } from './Interfaces/ITank';
+import { FuelCarResponse } from '../Infrastructure/Responses/FuelCarResponse';
 
-export class FuelCar extends Car implements ITank {
+export class FuelCar extends Car<FuelCarResponse> implements ITank {
     private fuelAvailable: number = 0;
 
-    constructor(public modelInfo: CarModel) {
-        super(modelInfo);
+    constructor(modelInfo: CarModel, mileage: number = 0, fuel: number = 0) {
+        super(modelInfo, mileage);
+
+        this.fuelAvailable = fuel;
     }
 
     public tank(liters: number): void {
@@ -38,5 +41,9 @@ export class FuelCar extends Car implements ITank {
     private calculateTripFuelConsumption(distance: number) {
         // consumption unit is l/100 km
         return (this.consumption * distance) / 100;
+    }
+
+    asResponse(): FuelCarResponse {
+        return new FuelCarResponse(this);
     }
 }

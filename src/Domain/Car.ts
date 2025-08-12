@@ -2,14 +2,15 @@ import { randomUUID, UUID } from 'node:crypto';
 
 import { CarModel } from './CarModel';
 import { IDrive } from './Interfaces/IDrive';
+import { IResponse } from './Interfaces/IResponse';
 
-export abstract class Car implements IDrive {
-    private readonly _id: UUID = randomUUID();
-    private readonly brand: string;
-    private readonly model: string;
+export abstract class Car<ResponseType> implements IDrive, IResponse<ResponseType> {
+    readonly _id: UUID = randomUUID();
+    readonly brand: string;
+    readonly model: string;
 
-    protected readonly consumption: number;
-    protected readonly capacity: number;
+    readonly consumption: number;
+    readonly capacity: number;
     protected totalMileage: number = 0;
 
     protected constructor(carModel: CarModel, totalMileage: number = 0) {
@@ -37,4 +38,5 @@ export abstract class Car implements IDrive {
     }
 
     abstract data(): string;
+    abstract asResponse(): ResponseType;
 }
