@@ -12,11 +12,12 @@ export abstract class Car implements IDrive {
     protected readonly capacity: number;
     protected totalMileage: number = 0;
 
-    protected constructor(carModel: CarModel) {
+    protected constructor(carModel: CarModel, totalMileage: number = 0) {
         this.brand = carModel.brand;
         this.model = carModel.model;
         this.consumption = carModel.consumption;
         this.capacity = carModel.capacity;
+        this.totalMileage = totalMileage;
     }
 
     public id(): UUID {
